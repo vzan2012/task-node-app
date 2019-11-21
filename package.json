@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node mongodb.js"
   },
   "keywords": [],
   "author": "Sitharaman Deepak Guptha",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.3.4"
+  }
 }
