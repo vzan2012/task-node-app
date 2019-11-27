@@ -12,13 +12,63 @@ MongoClient.connect(
   (error, client) => {
     if (error) return console.log("Unable to connect the Database");
 
-    //   console.log('Connected Successfully !!!');
+    console.log("Connected Successfully !!!");
 
     const db = client.db(databaseName);
 
-    db.collection("users").insertOne({
-      name: "Deepak",
-      age: 34
-    });
+    // Insert a single document using the insertOne() method
+    // db.collection("users").insertOne(
+    //   {
+    //     name: "ABCD",
+    //     age: 50
+    //   },
+    //   (error, result) => {
+    //     if (error) return console.log("Unable to insert the record");
+
+    //     console.log(result.ops);
+    //   }
+    // );
+
+    // Insert many documents using the insertMany() method
+    // db.collection("users").insertMany(
+    //   [
+    //     {
+    //       name: "Jen",
+    //       age: 28
+    //     },
+    //     {
+    //       name: "Gunther",
+    //       age: 27
+    //     }
+    //   ],
+    //   (error, result) => {
+    //     if (error) return console.log("Unable to insert many documents...");
+
+    //     console.log(result.ops);
+    //   }
+    // );
+
+    // Goal: Insert multiple tasks using insertMany() method
+    db.collection("tasks").insertMany(
+      [
+        {
+          description: "Attend Class",
+          completed: true
+        },
+        {
+          description: "Prepare Soup",
+          completed: true
+        },
+        {
+          description: "Prepare Dinner",
+          completed: false
+        }
+      ],
+      (error, result) => {
+        if (error) return console.log("Unable to insert multiple documents...");
+
+        console.log(result.ops);
+      }
+    );
   }
 );
