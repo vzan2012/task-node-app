@@ -27,6 +27,79 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
+    // Insert One User
+    // db.collection("users").insertOne(
+    //   {
+    //     name: "vzan2012",
+    //     age: "35",
+    //   },
+    //   () => console.log("Inserted Record")
+    // );
+
+    // Insert Many Users
+    // db.collection("users").insertMany(
+    //   [
+    //     {
+    //       name: "Anthony",
+    //       age: 57,
+    //     },
+    //     {
+    //       name: "Lourdes",
+    //       age: 14,
+    //     },
+    //     {
+    //       name: "Eino",
+    //       age: 53,
+    //     },
+    //     {
+    //       name: "Erol",
+    //       age: 34,
+    //     },
+    //   ],
+    //   (err, result) => {
+    //     if (err) return console.log("Unable to insert multiple records");
+
+    //     console.log("Inserted Successfully");
+    //     console.log("Inserted Records are: ");
+    //     console.log(result.ops);
+    //     console.log(`Number of records inserted: ${result.insertedCount}`);
+    //   }
+    // );
+
+    // Insert Tasks
+    // db.collection("tasks").insertMany(
+    //   [
+    //     {
+    //       description: "Petit Breakfast",
+    //       completed: true,
+    //     },
+    //     {
+    //       description: "Tea Time",
+    //       completed: false,
+    //     },
+    //     {
+    //       description: "Family Meeting",
+    //       completed: false,
+    //     },
+    //     {
+    //       description: "Official Call",
+    //       completed: false,
+    //     },
+    //     {
+    //       description: "Lunch and Popcorn",
+    //       completed: false,
+    //     },
+    //   ],
+    //   (err, result) => {
+    //     if (err) return console.log("Unable to insert the task records");
+
+    //     console.log("Inserted Successfully");
+    //     console.log("Inserted Records are: ");
+    //     console.log(result.ops);
+    //     console.log(`Number of records inserted: ${result.insertedCount}`);
+    //   }
+    // );
+
     // Fetch the data
     // db.collection("users").findOne({ _id: new ObjectID('5dd6a4b3e35c9e1460872b91') }, (error, user) => {
     //   if (error) return console.log("Unable to fetch the data");
@@ -48,19 +121,19 @@ MongoClient.connect(
     //     console.log(count);
     //   });
 
-    db.collection("tasks").findOne(
-      { _id: new ObjectID("5dde82c03a2e0b076823ea69") },
-      (error, tasks) => {
-        if (error) return console.log("Unable to fetch the data");
+    // db.collection("tasks").findOne(
+    //   { _id: new ObjectID("5dde82c03a2e0b076823ea69") },
+    //   (error, tasks) => {
+    //     if (error) return console.log("Unable to fetch the data");
 
-        console.log(tasks);
-      }
-    );
+    //     console.log(tasks);
+    //   }
+    // );
 
-    db.collection("tasks")
-      .find({ completed: false })
-      .toArray((error, tasks) => {
-        console.log(tasks);
-      });
+    // db.collection("tasks")
+    //   .find({ completed: false })
+    //   .toArray((error, tasks) => {
+    //     console.log(tasks);
+    //   });
   }
 );
