@@ -164,17 +164,33 @@ MongoClient.connect(
 
     // Goal
     // UpdateMany
+    // db.collection("tasks")
+    //   .updateMany(
+    //     {
+    //       completed: false,
+    //     },
+    //     {
+    //       $set: {
+    //         completed: true,
+    //       },
+    //     }
+    //   )
+    //   .then((result) => console.log(result))
+    //   .catch((err) => console.log(err));
+
+    //Delete
+    // db.collection("users")
+    //   .deleteMany({
+    //     age: 90,
+    //   })
+    //   .then((result) => console.log(result))
+    //   .catch((error) => console.log(error));
+
+    // Goal
     db.collection("tasks")
-      .updateMany(
-        {
-          completed: false,
-        },
-        {
-          $set: {
-            completed: true,
-          },
-        }
-      )
+      .deleteOne({
+        _id: new ObjectID("5eac58be6f98f92740b8eed2"),
+      })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
   }
