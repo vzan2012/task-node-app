@@ -145,5 +145,37 @@ MongoClient.connect(
     //   .toArray((error, tasks) => {
     //     console.log(tasks);
     //   });
+
+    // Update a document using Promise
+    // const updatePromise = db.collection("users").updateOne(
+    //   {
+    //     _id: new ObjectID("5eac585854fe752eb89a4674"),
+    //   },
+    //   {
+    //     $set: {
+    //       name: "Sai Shravan",
+    //     },
+    //   }
+    // );
+
+    // updatePromise
+    //   .then((result) => console.log(result))
+    //   .catch((err) => console.log(err));
+
+    // Goal
+    // UpdateMany
+    db.collection("tasks")
+      .updateMany(
+        {
+          completed: false,
+        },
+        {
+          $set: {
+            completed: true,
+          },
+        }
+      )
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
   }
 );
