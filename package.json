@@ -11,6 +11,7 @@
   "author": "Sitharaman Deepak Guptha",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.3.4"
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.9.14"
   }
 }
