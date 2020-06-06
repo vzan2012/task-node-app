@@ -21,16 +21,32 @@ app.use(taskRouter);
 // app.use(router);
 
 // Example Testing the bcryptjs
-const bcryptjs = require("bcryptjs");
+// const bcryptjs = require("bcryptjs");
+// const testFunc = async () => {
+//   const password = "SS_admin@123";
+//   const hashedPassword = await bcryptjs.hash(password, 9);
+
+//   console.log(`Password: ${password}`);
+//   console.log(`Hashed Password: ${hashedPassword}`);
+
+//   const isMatch = await bcryptjs.compare("SS_admin@123", hashedPassword);
+//   console.log(isMatch);
+// };
+
+// testFunc();
+
+// Example for testing JWT (JSON Web Tokens)
+const jwt = require("jsonwebtoken");
 const testFunc = async () => {
-  const password = "SS_admin@123";
-  const hashedPassword = await bcryptjs.hash(password, 9);
+  const token = jwt.sign(
+    { _id: "id@123" },
+    "I am a student for this class only",
+    { expiresIn: "10 seconds" }
+  );
+  console.log(token);
 
-  console.log(`Password: ${password}`);
-  console.log(`Hashed Password: ${hashedPassword}`);
-
-  const isMatch = await bcryptjs.compare("SS_admin@123", hashedPassword);
-  console.log(isMatch);
+  const data = jwt.verify(token, "I am a student for this class only");
+  console.log(data);
 };
 
 testFunc();
