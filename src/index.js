@@ -8,6 +8,29 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+// Without Middleware:
+//   new request -> run route handler
+
+// With Middleware:
+//   new request -> process required -> run route handler
+
+// Middleware
+// app.use((req, res, next) => {
+//   // console.log(req.method, req.path);
+//   // next();
+
+//   // Example: Block GET requests
+//   // if (req.method === "GET") {
+//   //   res.send("GET requests are disabled");
+//   // } else {
+//   //   next();
+//   // }
+// });
+
+// app.use((req, res, next) =>
+//   res.status(500).send("Maintainence mode is running...")
+// );
+
 app.use(express.json());
 
 // New Router for User
