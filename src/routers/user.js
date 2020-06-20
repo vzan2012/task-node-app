@@ -2,6 +2,9 @@ const express = require("express");
 const User = require("../models/user");
 const router = new express.Router();
 
+// Call the Middleware
+const auth = require("../middleware/auth");
+
 // User Endpoint
 router.post("/users", async (req, res) => {
   const user = new User(req.body);
@@ -36,19 +39,9 @@ router.post("/users/login", async (req, res) => {
   }
 });
 
-// Read Users
-router.get("/users", async (req, res) => {
-  try {
-    const users = await User.find({});
-    res.send(users);
-  } catch (e) {
-    res.status(500).send(e);
-  }
-
-  // Older Code
-  // User.find({})
-  //   .then((users) => res.send(users))
-  //   .catch((e) => res.status(500).send());
+// Read Users (Only the logged user able to see his/her own data)
+router.get("/users/me", auth, async (req, res) => {
+  res.send(req.user);
 });
 
 // Read User By ID
