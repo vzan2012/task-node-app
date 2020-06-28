@@ -59,19 +59,32 @@ app.use(taskRouter);
 // testFunc();
 
 // Example for testing JWT (JSON Web Tokens)
-const jwt = require("jsonwebtoken");
-const testFunc = async () => {
-  const token = jwt.sign(
-    { _id: "id@123" },
-    "I am a student for this class only",
-    { expiresIn: "10 seconds" }
-  );
-  console.log(token);
+// const jwt = require("jsonwebtoken");
+// const testFunc = async () => {
+//   const token = jwt.sign(
+//     { _id: "id@123" },
+//     "I am a student for this class only",
+//     { expiresIn: "10 seconds" }
+//   );
+//   console.log(token);
 
-  const data = jwt.verify(token, "I am a student for this class only");
-  console.log(data);
-};
+//   const data = jwt.verify(token, "I am a student for this class only");
+//   console.log(data);
+// };
 
-testFunc();
+// testFunc();
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
+
+// const animal = {
+//   name: "cat",
+// };
+
+// animal.toJSON = function () {
+//   // console.log(this);
+//   // return this;
+//   return {};
+// };
+
+// // console.log(animal);
+// console.log(JSON.stringify(animal));

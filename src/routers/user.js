@@ -31,7 +31,8 @@ router.post("/users/login", async (req, res) => {
     );
 
     const token = await user.generateAuthToken();
-    res.send({ user, token });
+    // res.send({ user: user.getPublicProfile(), token });
+    res.send({ user: user, token });
 
     res.send(user);
   } catch (e) {
