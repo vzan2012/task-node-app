@@ -15,11 +15,6 @@ router.post("/users", async (req, res) => {
   } catch (e) {
     res.status(400).send(e);
   }
-  // Older code
-  // user
-  //   .save()
-  //   .then(() => res.status(201).send(user))
-  //   .catch((err) => res.status(400).send(err));
 });
 
 // User login - Endpoint
@@ -31,7 +26,6 @@ router.post("/users/login", async (req, res) => {
     );
 
     const token = await user.generateAuthToken();
-    // res.send({ user: user.getPublicProfile(), token });
     res.send({ user: user, token });
 
     res.send(user);
@@ -82,14 +76,6 @@ router.get("/users/:id", async (req, res) => {
   } catch (e) {
     res.status(500).send();
   }
-
-  // Older Code
-  // User.findById(_id)
-  //   .then((user) => {
-  //     if (!user) return res.status(404).send();
-  //     res.send(user);
-  //   })
-  //   .catch((e) => res.status(500).send());
 });
 
 // Update User
@@ -104,16 +90,10 @@ router.patch("/users/me", auth, async (req, res) => {
     return res.status(400).send({ error: "Invalid updates!" });
   }
   try {
-    // const user = await User.findById(req.user._id);
-
     updates.forEach((update) => (req.user[update] = req.body[update]));
 
     await req.user.save();
-    // const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-    //   new: true,
-    //   runValidators: true,
-    // });
-    // if (!user) return res.status(404).send();
+
     res.send(req.user);
   } catch (e) {
     res.status(400).send(e);
@@ -123,8 +103,6 @@ router.patch("/users/me", auth, async (req, res) => {
 // Delete User (logged in)
 router.delete("/users/me", auth, async (req, res) => {
   try {
-    // const user = await User.findByIdAndDelete(req.user._id);
-    // if (!user) return res.status(404).send();
     await req.user.remove();
     res.send(req.user);
   } catch (e) {

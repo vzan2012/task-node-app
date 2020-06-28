@@ -13,11 +13,6 @@ router.post("/tasks", async (req, res) => {
   } catch (e) {
     res.status(400).send(e);
   }
-
-  // task
-  //   .save()
-  //   .then(() => res.status(201).send(task))
-  //   .catch((err) => res.status(400).send(err));
 });
 
 // Read Tasks
@@ -28,11 +23,6 @@ router.get("/tasks", async (req, res) => {
   } catch (e) {
     res.status(500).send(e);
   }
-
-  // Older Code
-  // Task.find({})
-  //   .then((tasks) => res.send(tasks))
-  //   .catch((e) => res.send(500));
 });
 
 // Read Task By ID
@@ -46,13 +36,6 @@ router.get("/tasks/:id", async (req, res) => {
   } catch (e) {
     res.status(500).send(e);
   }
-  // Older Code
-  // Task.findById(_id)
-  //   .then((task) => {
-  //     if (!task) return res.status(404).send();
-  //     res.send(task);
-  //   })
-  //   .catch((e) => res.status(500).send());
 });
 
 // Update Task by Id
@@ -70,10 +53,7 @@ router.patch("/tasks/:id", async (req, res) => {
     updates.forEach((update) => (task[update] = req.body[update]));
 
     await task.save();
-    // const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
-    //   new: true,
-    //   runValidators: true,
-    // });
+
     if (!task) return res.status(404).send();
     res.send(task);
   } catch (e) {

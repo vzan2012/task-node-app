@@ -12,12 +12,6 @@ const taskSchema = new mongoose.Schema({
   },
 });
 
-// taskSchema.pre("save", async function (next) {
-//   const task = this;
-//   console.log("Before Task Save");
-//   next();
-// });
-
 // Creation of Tasks
 const Tasks = mongoose.model("Tasks", taskSchema);
 
