@@ -88,3 +88,20 @@ app.listen(port, () => console.log(`Server running on port ${port}`));
 
 // // console.log(animal);
 // console.log(JSON.stringify(animal));
+
+const Task = require("./models/task");
+const User = require("./models/user");
+
+const main = async () => {
+  //   const task = await Task.findById("5f005d3e9fff2d2a60afc41a");
+  //   console.log(task);
+  //   await task.populate("owner").execPopulate();
+  //   console.log(task.owner);
+
+  const user = await User.findById("5f00593ddd59be4328294010");
+  //   console.log(user);
+  await user.populate("tasks").execPopulate();
+  console.log(user.tasks);
+};
+
+main();
