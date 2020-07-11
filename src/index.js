@@ -89,8 +89,8 @@ app.listen(port, () => console.log(`Server running on port ${port}`));
 // // console.log(animal);
 // console.log(JSON.stringify(animal));
 
-const Task = require("./models/task");
-const User = require("./models/user");
+// const Task = require("./models/task");
+// const User = require("./models/user");
 
 // const main = async () => {
 //   //   const task = await Task.findById("5f005d3e9fff2d2a60afc41a");
@@ -105,3 +105,21 @@ const User = require("./models/user");
 // };
 
 // main();
+
+// Multer Uploader
+const multer = require("multer");
+const upload = multer({
+  dest: "images",
+  limits: { fileSize: 1000000 },
+  fileFilter(req, file, cb) {
+    //   if (!file.originalname.match(/\.(doc|docx)$/))
+    if (!file.originalname.endsWith(".pdf"))
+      return cb(new Error("Please upload a pdf File"));
+
+    cb(undefined, true);
+    //   cb(new Error('Please upload a PDF File'))
+    //   cb(undefined, true)
+    //   cb(undefined, false)
+  },
+});
+app.post("/upload", upload.single("upload"), (req, res) => res.send());
