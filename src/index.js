@@ -122,4 +122,10 @@ const upload = multer({
     //   cb(undefined, false)
   },
 });
-app.post("/upload", upload.single("upload"), (req, res) => res.send());
+
+app.post(
+  "/upload",
+  upload.single("upload"),
+  (req, res) => res.send(),
+  (error, req, res, next) => res.status(400).send({ error: error.message })
+);
